@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
+const models = require("./models/Index");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,6 +15,8 @@ app.get("/", (req, res) => {
 });
 dotenv.config();
 const port = process.env.PORT;
-app.listen(port, () => {
-  console.log(`notes application is listening on port ${port}!`);
+models.sequelize.sync({ force: true }).then(() => {
+  app.listen(port, () => {
+    console.log(`notes application is listening on port ${port}!`);
+  });
 });
