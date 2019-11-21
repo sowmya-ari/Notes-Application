@@ -3,12 +3,6 @@ module.exports = (sequelize, DataTypes) => {
   const Mynotes = sequelize.define(
     "Mynotes",
     {
-      id: {
-        type: DataTypes.UUID,
-        primaryKey: true,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false
-      },
       user_id: {
         type: DataTypes.UUID,
         allowNull: false
