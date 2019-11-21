@@ -14,7 +14,8 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       },
       title: DataTypes.STRING,
-      content: DataTypes.STRING
+      content: DataTypes.STRING,
+      color: DataTypes.VARCHAR
     },
     {}
   );
