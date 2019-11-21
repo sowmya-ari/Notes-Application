@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       title: DataTypes.STRING,
       content: DataTypes.STRING,
-      color: DataTypes.VARCHAR
+      color: DataTypes.STRING
     },
     {}
   );
