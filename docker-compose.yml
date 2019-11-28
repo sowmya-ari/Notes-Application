@@ -1,0 +1,21 @@
+version: "3"
+services:
+  web:
+    build: ./server
+    ports:
+      - "8080:8080"
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_USER: "sowmya"
+      POSTGRES_DB: "notes"
+      POSTGRES_HOST: "db-postgres-1.clm3eqndxrda.ap-south-1.rds.amazonaws.com"
+      POSTGRES_PORT: "5432"
+    command: ["npm","run","dev"]
+
+  client:
+    build: ./client
+    command: npm start
+    depends_on:
+      - web
+    ports:
+      - "3000:3000"
