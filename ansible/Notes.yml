@@ -1,0 +1,62 @@
+  - hosts: web
+    remote_user: ec2-user
+    become: true
+    tasks:
+      - name: Update all packages
+        yum:
+           name: '*'
+           state: latest
+           update_cache: yes
+
+      - name: install docker
+        yum:
+          name: "{{ packages }}"
+          state: latest
+          update_cache: yes
+        vars:
+          packages:
+           - docker  
+           - python-pip
+      - pip:
+         name: docker-py
+         state: latest
+       
+      - name: service docker
+        service:
+          name: docker
+          state: started
+          enabled: yes
+    
+  - hosts: web
+    remote_user: ec2-user
+    become: true
+    tasks:
+      - name: Starting web server
+        docker_container:
+          name: web
+          image: sowmya1234/notes-web:latest
+          restart: yes
+          state: started
+          env:
+            POSTGRES_PASSWORD: "postgres"
+            POSTGRES_USERNAME: "sowmya"
+            POSTGRES_DATABASE: "notes"
+            POSTGRES_HOST: "notes-postgres.cgec0xq22d3g.us-east-1.rds.amazonaws.com"
+            POSTGRES_PORT: "5432"
+          ports:
+            - "8000:8000"
+         
+
+      - name: Starting client server
+        docker_container:
+          name: client
+          image: sowmya1234/notes-client:latest
+          state: started
+          restart: yes
+          links:
+            - web
+          ports:
+            - "3000:3000"
+         
+
+        
