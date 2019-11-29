@@ -92,7 +92,7 @@ class Register extends React.Component {
             <Form.Control
               placeholder="Confirm password"
               value={this.state.retype_password}
-              onChange={this.HandleRetypePasswordchange}
+              onChange={this.HandleRetypePasswordChange}
               type="password"
             />
           </Form.Group>
