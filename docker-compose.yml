@@ -3,11 +3,11 @@ services:
   web:
     build: ./server
     ports:
-      - "8080:8080"
+      - "8000:8000"
     environment:
       POSTGRES_PASSWORD: "postgres"
-      POSTGRES_USER: "sowmya"
-      POSTGRES_DB: "notes"
+      POSTGRES_USERNAME: "sowmya"
+      POSTGRES_DATABASE: "notes"
       POSTGRES_HOST: "db-postgres-1.clm3eqndxrda.ap-south-1.rds.amazonaws.com"
       POSTGRES_PORT: "5432"
     command: ["npm","run","dev"]
