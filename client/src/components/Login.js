@@ -21,7 +21,7 @@ class Login extends React.Component {
     const dateNow = new Date();
     if (token) {
       if (decodedToken.exp < dateNow.getTime()) {
-        this.props.history.push("/notes");
+        this.props.history.push("/note");
       }
     } else {
       return this.props.history.push("/");
@@ -46,16 +46,21 @@ class Login extends React.Component {
       username: this.state.username,
       password: this.state.password
     };
-    axios.post("/login", data).then(res => {
-      this.setState({ result: res.data });
-      if (res.data.status === 201) {
-        const token = res.data.token;
-        const id = res.data.id;
-        localStorage.setItem("Token", token);
-        localStorage.setItem("user_id", id);
-        window.location.reload();
-      }
-    });
+    axios
+      .post(
+        "http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/login",
+        data
+      )
+      .then(res => {
+        this.setState({ result: res.data });
+        if (res.data.status === 201) {
+          const token = res.data.token;
+          const id = res.data.id;
+          localStorage.setItem("Token", token);
+          localStorage.setItem("user_id", id);
+          window.location.reload();
+        }
+      });
     this.setState({
       username: "",
       password: ""

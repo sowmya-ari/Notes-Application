@@ -34,9 +34,12 @@ class Note extends React.Component {
   DeleteNotes = () => {
     const result = Setauthtoken();
     const id = this.props.id;
-    axios.delete(`/notes/${id}`, {
-      headers: { Authorization: `${result.token}` }
-    });
+    axios.delete(
+      `http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/notes/${id}`,
+      {
+        headers: { Authorization: `${result.token}` }
+      }
+    );
   };
 
   HandleEditingNotes = () => {
@@ -66,18 +69,26 @@ class Note extends React.Component {
       this.setState({
         editing: false
       });
-      axios.patch(`/notes/${id}`, title, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${result.token}`
+      axios.patch(
+        `http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/notes/${id}`,
+        title,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${result.token}`
+          }
         }
-      });
-      axios.put(`/notes/${id}`, content, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${result.token}`
+      );
+      axios.put(
+        `http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/notes/${id}`,
+        content,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `${result.token}`
+          }
         }
-      });
+      );
     }
   };
 
@@ -92,7 +103,7 @@ class Note extends React.Component {
   HandleColorChange = color => {
     const result = Setauthtoken();
     axios.patch(
-      `/notes/color/${this.props.id}`,
+      `http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/notes/color/${this.props.id}`,
       { color: color.hex },
       {
         headers: {

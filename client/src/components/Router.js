@@ -11,7 +11,7 @@ class Customrouter extends React.Component {
       <div className="routes">
         <Switch>
           <Route path="/" exact component={Login} />
-          <Route path="/notes" component={Notes} />
+          <Route path="/note" component={Notes} />
           <Route path="/register" component={Register} />
           <Route path="/logout" component={Logout} />
         </Switch>
