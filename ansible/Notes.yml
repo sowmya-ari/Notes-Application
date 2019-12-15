@@ -1,4 +1,4 @@
-  - hosts: web
+  - hosts: all
     remote_user: ec2-user
     become: true
     tasks:
@@ -27,7 +27,7 @@
           state: started
           enabled: yes
     
-  - hosts: web
+  - hosts: api-servers
     remote_user: ec2-user
     become: true
     tasks:
@@ -46,15 +46,16 @@
           ports:
             - "8000:8000"
          
-
+  - hosts: client
+    remote_user: ec2-user
+    become: true
+    tasks:   
       - name: Starting client server
         docker_container:
           name: client
           image: sowmya1234/notes-client:latest
           state: started
           restart: yes
-          links:
-            - web
           ports:
             - "3000:3000"
          
