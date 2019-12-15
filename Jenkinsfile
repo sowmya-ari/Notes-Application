@@ -5,7 +5,7 @@ pipeline {
         }
     }
     stages {
-        stage('Cloning todo git repository') {
+        stage('Cloning Notes git repository') {
             steps {
               git 'https://github.com/sowmya-ari/Notes-Application.git'
             }
@@ -20,6 +20,20 @@ pipeline {
                 stage('frontend'){
                   steps {
                     sh 'cd client && npm install'
+                  }
+                }
+            }
+        }
+        stage('Test') {
+            parallel{
+                stage('Backend testing'){
+                  steps {
+                    sh 'cd server/test && npm test'
+                  }
+                }
+                stage('Frontend testing'){
+                  steps {
+                    sh 'cd client/src/test && npm test'
                   }
                 }
             }
