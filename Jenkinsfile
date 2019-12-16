@@ -12,12 +12,12 @@ pipeline {
         }
         stage('Installing packages') {
             parallel {
-                stage('backend'){
+                stage('Backend'){
                   steps {
                     sh 'cd server && npm install'
                   }
                 }
-                stage('frontend'){
+                stage('Frontend'){
                   steps {
                     sh 'cd client && npm install'
                   }
@@ -40,15 +40,15 @@ pipeline {
         }
         stage('Building Docker image') {
             parallel{
-                stage('server image'){
+                stage('Backend image'){
                   steps {
                     sh 'cd server && docker image build -t web .'
                     sh 'docker tag web sowmya1234/notes-web:latest'
                   }
                 }
-                stage('client image'){
+                stage('Frontend image'){
                   steps {
-                    sh 'cd client && docker image build -t client .'
+                    sh 'cd client && docker image build -t client ELB.Dockerfile .'
                     sh 'docker tag client sowmya1234/notes-client:latest' 
                   }
                 }
