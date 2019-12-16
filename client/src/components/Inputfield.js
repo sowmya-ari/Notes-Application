@@ -28,16 +28,12 @@ class InputField extends React.Component {
       title: this.state.title,
       content: this.state.content
     };
-    axios.post(
-      "http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/notes",
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `${result.token}`
-        }
+    axios.post("http://localhost:8000/notes", data, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${result.token}`
       }
-    );
+    });
     this.setState({
       title: " ",
       content: " "

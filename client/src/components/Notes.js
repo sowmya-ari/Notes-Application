@@ -27,12 +27,9 @@ class Notes extends React.Component {
   GetAllNotes = () => {
     const result = SetAuthToken();
     axios
-      .get(
-        `http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/notes/${result.user_id}`,
-        {
-          headers: { Authorization: `${result.token}` }
-        }
-      )
+      .get(`http://localhost:8000/notes/${result.user_id}`, {
+        headers: { Authorization: `${result.token}` }
+      })
       .then(res => {
         this.setState({ notes: res.data.notes });
       });

@@ -34,7 +34,7 @@ class Note extends React.Component {
   DeleteNotes = () => {
     const result = SetAuthToken();
     const id = this.props.id;
-    axios.delete(`/notes/${id}`, {
+    axios.delete(`http://localhost:8000/notes/${id}`, {
       headers: { Authorization: `${result.token}` }
     });
   };

@@ -48,10 +48,11 @@ class Login extends React.Component {
       password: this.state.password
     };
     axios
-      .post(
-        "http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/login",
-        data
-      )
+      .post("http://localhost:8000/login", data, {
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        }
+      })
       .then(res => {
         this.setState({ result: res.data });
         if (res.data.status === 201) {
