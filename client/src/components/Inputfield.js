@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import SetAuthToken from "../utils/SetHeaderWithToken";
-import "../styles/InputField.css";
+import "../styles/Inputfield.css";
 
 class InputField extends React.Component {
   constructor(props) {

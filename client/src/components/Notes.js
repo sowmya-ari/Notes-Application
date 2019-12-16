@@ -1,6 +1,6 @@
 import React from "react";
 import Note from "./Note";
-import InputField from "./InputField";
+import InputField from "./Inputfield";
 import SetAuthToken from "../utils/SetHeaderWithToken";
 import axios from "axios";
 import "../styles/Notes.css";
