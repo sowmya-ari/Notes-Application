@@ -24,7 +24,10 @@ class Register extends React.Component {
     };
     this.setState({ result: {} });
     axios
-      .post("http://localhost:8000/register", data)
+      .post(
+        "http://notes-alb-541083935.us-east-1.elb.amazonaws.com:8000/register",
+        data
+      )
       .then(res => {
         if (res.data.status === 201) {
           this.setState({ result: res.data });
