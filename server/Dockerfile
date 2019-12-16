@@ -1,8 +1,7 @@
 FROM node:10
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json /app/
 RUN npm install
-COPY App.js ./
-COPY . .
+COPY ./ /app/
 EXPOSE 8000
 CMD ["npm","run","server"]
