@@ -63,9 +63,9 @@ pipeline {
             steps {
               withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'privatekey-ec2', keyFileVariable: 'SSH_KEY_FOR_ec2')]) 
               { 
-                sh 'ssh -i ${SSH_KEY_FOR_ec2} -o StrictHostKeyChecking=no ec2-user@3.230.150.182'
-                sh 'ssh -i ${SSH_KEY_FOR_ec2} -o StrictHostKeyChecking=no ec2-user@34.237.1.95'
-                sh 'ssh -i ${SSH_KEY_FOR_ec2} -o StrictHostKeyChecking=no ec2-user@3.232.129.26'
+                sh 'ssh -i ${SSH_KEY_FOR_ec2} -o StrictHostKeyChecking=no ec2-user@3.231.159.66'
+                sh 'ssh -i ${SSH_KEY_FOR_ec2} -o StrictHostKeyChecking=no ec2-user@54.208.23.84'
+                sh 'ssh -i ${SSH_KEY_FOR_ec2} -o StrictHostKeyChecking=no ec2-user@100.25.77.3'
                 sh 'ssh -i ${SSH_KEY_FOR_ec2} -o StrictHostKeyChecking=no ec2-user@3.224.114.200'
                 sh 'cd ansible && ansible-playbook Notes.yml -i Inventory.txt --private-key=${SSH_KEY_FOR_ec2} -k -K'
               }     
