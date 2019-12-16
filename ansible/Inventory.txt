@@ -1,6 +1,6 @@
-api-1 ansible_host=3.230.150.182 ansible_connection=ssh ansible_user=ec2-user ansible_python_interpreter=/usr/bin/python
-api-2 ansible_host=34.237.1.95 ansible_connection=ssh ansible_user=ec2-user ansible_python_interpreter=/usr/bin/python
-api-3 ansible_host=3.232.129.26 ansible_connection=ssh ansible_user=ec2-user ansible_python_interpreter=/usr/bin/python
+api-1 ansible_host=3.231.159.66 ansible_connection=ssh ansible_user=ec2-user ansible_python_interpreter=/usr/bin/python
+api-2 ansible_host=54.208.23.84 ansible_connection=ssh ansible_user=ec2-user ansible_python_interpreter=/usr/bin/python
+api-3 ansible_host=100.25.77.3 ansible_connection=ssh ansible_user=ec2-user ansible_python_interpreter=/usr/bin/python
 client ansible_host=3.224.114.200  ansible_connection=ssh ansible_user=ec2-user ansible_python_interpreter=/usr/bin/python
 [api-servers]
 api-1
