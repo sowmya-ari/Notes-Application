@@ -1,7 +1,7 @@
 import React from "react";
 import { CompactPicker } from "react-color";
 import axios from "axios";
-import Setauthtoken from "../utils/Setauthtoken";
+import SetAuthToken from "../utils/SetHeaderWithToken";
 import "../styles/Note.css";
 
 class Note extends React.Component {
@@ -32,14 +32,11 @@ class Note extends React.Component {
   }
 
   DeleteNotes = () => {
-    const result = Setauthtoken();
+    const result = SetAuthToken();
     const id = this.props.id;
-    axios.delete(
-      `http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/notes/${id}`,
-      {
-        headers: { Authorization: `${result.token}` }
-      }
-    );
+    axios.delete(`/notes/${id}`, {
+      headers: { Authorization: `${result.token}` }
+    });
   };
 
   HandleEditingNotes = () => {
@@ -61,7 +58,7 @@ class Note extends React.Component {
   };
 
   HandleEditingDone = event => {
-    const result = Setauthtoken();
+    const result = SetAuthToken();
     const id = this.props.id;
     const title = { title: this.state.title };
     const content = { content: this.state.content };
@@ -101,7 +98,7 @@ class Note extends React.Component {
   };
 
   HandleColorChange = color => {
-    const result = Setauthtoken();
+    const result = SetAuthToken();
     axios.patch(
       `http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/notes/color/${this.props.id}`,
       { color: color.hex },
@@ -178,12 +175,14 @@ class Note extends React.Component {
         <div style={edit} className="editing">
           <textarea
             type="text"
+            className="titlearea"
             value={this.state.title}
             onChange={this.HandleTitleEditing}
             onKeyDown={this.HandleEditingDone}
           />
           <textarea
             type="text"
+            className="contentarea"
             value={this.state.content}
             onChange={this.HandleContentEditing}
             onKeyDown={this.HandleEditingDone}

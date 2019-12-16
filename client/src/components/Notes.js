@@ -1,7 +1,7 @@
 import React from "react";
 import Note from "./Note";
-import Inputfield from "./Inputfield";
-import Setauthtoken from "../utils/Setauthtoken";
+import InputField from "./InputField";
+import SetAuthToken from "../utils/SetHeaderWithToken";
 import axios from "axios";
 import "../styles/Notes.css";
 
@@ -25,7 +25,7 @@ class Notes extends React.Component {
     }
   }
   GetAllNotes = () => {
-    const result = Setauthtoken();
+    const result = SetAuthToken();
     axios
       .get(
         `http://notes-alb-1339370148.us-east-1.elb.amazonaws.com:8000/notes/${result.user_id}`,
@@ -41,7 +41,7 @@ class Notes extends React.Component {
   render() {
     return (
       <div>
-        <Inputfield />
+        <InputField />
         <div className="card-columns">
           <div className="notes">
             {this.state.notes.map((note, key) => (

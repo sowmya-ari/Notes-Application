@@ -7,7 +7,7 @@ class Logout extends React.Component {
     window.location.reload();
   }
   render() {
-    return <p>Logout</p>;
+    return <p></p>;
   }
 }
 export default Logout;

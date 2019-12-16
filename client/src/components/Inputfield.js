@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios";
-import Setauthtoken from "../utils/Setauthtoken";
-import "../styles/Inputfield.css";
+import SetAuthToken from "../utils/SetHeaderWithToken";
+import "../styles/InputField.css";
 
-class Inputfield extends React.Component {
+class InputField extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,7 @@ class Inputfield extends React.Component {
 
   HandleSubmit = event => {
     event.preventDefault();
-    const result = Setauthtoken();
+    const result = SetAuthToken();
     const data = {
       user_id: result.user_id,
       title: this.state.title,
@@ -71,4 +71,4 @@ class Inputfield extends React.Component {
   }
 }
 
-export default Inputfield;
+export default InputField;

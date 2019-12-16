@@ -5,7 +5,7 @@ import Register from "./Registration";
 import Logout from "./Logout";
 import Notes from "./Notes";
 
-class Customrouter extends React.Component {
+class CustomRouter extends React.Component {
   render() {
     return (
       <div className="routes">
@@ -19,4 +19,4 @@ class Customrouter extends React.Component {
     );
   }
 }
-export default Customrouter;
+export default CustomRouter;
