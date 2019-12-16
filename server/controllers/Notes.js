@@ -1,5 +1,5 @@
 var services = require("../services/Notes");
-var validations = require("../validations/Noteschema");
+var validations = require("../validations/NoteSchema");
 
 const CreateNotes = async function(req, res) {
   const { value, error } = await validations.Notes(req.body);
