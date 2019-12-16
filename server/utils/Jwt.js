@@ -21,7 +21,7 @@ const ValidateToken = function(req, res, next) {
       next();
     } catch (err) {
       result = {
-        error: "Token required",
+        error: "Token is invalid",
         status: 403
       };
       return result;
