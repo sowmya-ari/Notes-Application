@@ -1,5 +1,4 @@
 const chai = require("chai");
-const expect = chai.expect;
 chai.use(require("sinon-chai"));
 
 const {
@@ -11,10 +10,10 @@ const {
 const usersModel = require("../models/Users");
 
 describe("Testing notes model", () => {
-  const Users = usersModel(sequelize, dataTypes);
-  const instance = new Users();
+  const users = usersModel(sequelize, dataTypes);
+  const instance = new users();
 
-  checkModelName(Users)("Users");
+  checkModelName(users)("Users");
 
   context("Testing the model properties", () => {
     ["username", "password"].forEach(checkPropertyExists(instance));
