@@ -25,10 +25,8 @@ pipeline {
             }
         }
         stage('Test') {
-                stage('Backend testing'){
-                  steps {
+                steps {
                     sh 'cd server/test && npm test'
-                  }
                 }
         }
         stage('Building Docker image') {
