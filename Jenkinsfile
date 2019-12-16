@@ -25,18 +25,11 @@ pipeline {
             }
         }
         stage('Test') {
-            parallel{
                 stage('Backend testing'){
                   steps {
                     sh 'cd server/test && npm test'
                   }
                 }
-                stage('Frontend testing'){
-                  steps {
-                    sh 'cd client/src/test && npm test'
-                  }
-                }
-            }
         }
         stage('Building Docker image') {
             parallel{
