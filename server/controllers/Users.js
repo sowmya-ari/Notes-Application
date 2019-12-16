@@ -1,5 +1,5 @@
 const services = require("../services/Users");
-const validations = require("../validations/UserSchema");
+const validations = require("../validations/Userschema");
 const password = require("../utils/Password");
 const jwt = require("../utils/Jwt");
 
