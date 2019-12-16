@@ -8,7 +8,7 @@
            state: latest
            update_cache: yes
 
-      - name: install docker
+      - name: Install docker
         yum:
           name: "{{ packages }}"
           state: latest
@@ -17,11 +17,12 @@
           packages:
            - docker  
            - python-pip
+
       - pip:
          name: docker-py
          state: latest
        
-      - name: service docker
+      - name: Check docker service
         service:
           name: docker
           state: started
@@ -31,7 +32,7 @@
     remote_user: ec2-user
     become: true
     tasks:
-      - name: Starting web server
+      - name: Starting api server
         docker_container:
           name: web
           image: sowmya1234/notes-web:latest
