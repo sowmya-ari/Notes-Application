@@ -1,3 +1,11 @@
 .editing {
-    display: grid;
+    display: inline-block;
+}
+.titlearea {
+   width: 100%;
+   font-size: 24px
+}
+.contentarea {
+   width: 100%;
+   font-size: 24px 
 }
