@@ -39,7 +39,7 @@ pipeline {
                 }
                 stage('Frontend image'){
                   steps {
-                    sh 'cd client && docker image build -t client ELB.Dockerfile'
+                    sh 'cd client && docker image build -f ELB.Dockerfile -t client .'
                     sh 'docker tag client sowmya1234/notes-client:latest' 
                   }
                 }
